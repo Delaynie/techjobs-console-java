@@ -3,6 +3,7 @@ package org.launchcode.techjobs.console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -11,7 +12,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -60,8 +61,12 @@ public class TechJobs {
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
 
+
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    // prints out the values from job_data that contain the searchTerm from the user.
+                    printJobs(JobData.findByValue(searchField, searchTerm));
+
+
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -103,7 +108,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -111,6 +116,38 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+
+            for (HashMap<String, String> jobs : someJobs) {
+                System.out.println("\n********");
+
+                for (Map.Entry<String, String> moreJobs : jobs.entrySet()) {
+                        String key = moreJobs.getKey();
+                        String value = moreJobs.getValue();
+
+                    if (jobs.containsValue(value)) {
+                            System.out.println(key + " : " + value);
+
+                        }
+
+                    }
+                    System.out.print("********\n");
+                }
+            }
+
     }
-}
+
+
+    /*for (CollectionType<dataType, dataType> jobObject : nameOfList) {
+        for (Map.Entry<dataType, dataType> jobProperties : jobObject.entrySet()) {
+            dataType key = jobProperties.getKey();
+            dataType value = jobProperties.getValue();
+            System.out.println(key + " : " + value);
+        }
+        }
+
+        // what to do if there are no results?!
+            if (value.equals("") || value.equals(0)) {
+                System.out.println("No results, sorry ma dear");
+            }
+
+    */
