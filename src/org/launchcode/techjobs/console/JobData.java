@@ -155,9 +155,3 @@ public class JobData {
     }
 
 }
-
-/*if (term.contains("ruby")) {
-        return jobs;
-        } else if (!term.contains("ruby")) {
-        System.out.println("Sorry, there are no matching results");
-        }*/

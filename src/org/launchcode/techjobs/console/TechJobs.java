@@ -135,19 +135,3 @@ public class TechJobs {
             }
 
     }
-
-
-    /*for (CollectionType<dataType, dataType> jobObject : nameOfList) {
-        for (Map.Entry<dataType, dataType> jobProperties : jobObject.entrySet()) {
-            dataType key = jobProperties.getKey();
-            dataType value = jobProperties.getValue();
-            System.out.println(key + " : " + value);
-        }
-        }
-
-        // what to do if there are no results?!
-            if (value.equals("") || value.equals(0)) {
-                System.out.println("No results, sorry ma dear");
-            }
-
-    */
